@@ -1,0 +1,93 @@
+
+	<table border = 1 >
+	<tr align ="center">
+		  <tr>
+			<th>Project Id</th>
+			<th>Project Name</th>
+			<th>Edit</th>
+			<th>Destroy</th>
+			<th>Iterations</th>
+			<th>Userstories</th>
+			<th>Tasks</th>
+		  </tr>
+	</tr>
+<% @projects.each do |project| %>
+  <%if current_user.id == project.user_id%>
+
+
+		 <tr align ="center">
+				<td><%= project.id %></td>
+				<td><%= link_to project.name, new_project_iteration_path(project.id) %></td>
+				<td><%= link_to(image_tag('editing.png' ), edit_project_path(project), :class => "edittag") %> </td>
+				<td><%= link_to image_tag('deletings.png'), project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td>
+							<%  @allitertions = Iteration.find(:all, :conditions => {:project_id  =>  project.id}) %>
+							<%arr = Array.new%>
+							<%i = 0%>
+							<% @allitertions.each do |demo| %>
+								<% arr<< demo.id%>
+								<%i = i +1%>
+							<%end%>
+							<%= link_to i, project_iterations_path(project.id) %>
+				</td>
+				<td>
+					<% @allusdemo = Usdemo.find(:all, :conditions => {:projectid  =>  project.id})%>
+								<%arr = Array.new%>
+								<%current_iter = Array.new%>
+								<%j = 0%>
+								<% @allusdemo.each do |demo| %>
+									<% arr<< demo.id%>
+										<% current_iter << demo.iteration_id%>
+									<%j = j +1%>
+								<%end%>
+								<%#= current_iter%>
+								<%#= raise @iteration.inspect %>
+								<%#= raise @allusdemo.inspect%>
+							
+								<%if !current_iter.blank? %>
+									<%= link_to j, project_iteration_usdemos_path(project.id, current_iter.first) %>
+								<%else%>
+									<%= link_to j%>
+								<%end%>
+				</td>
+				<td >						
+								<% @allusdemo = Task.find(:all, :conditions => {:proid  =>  project.id})%>
+									<%arr = Array.new%>
+									<%arr_usid = Array.new%>
+										<%k = 0%>
+										<% @allusdemo.each do |demo| %>
+											<% arr <<  demo.id%>
+											<% arr_usid << demo.usdemo_id%>
+											<%k = k +1%>
+										<%end%>
+										<%@iteration = Iteration.find(:all, :conditions => {:project_id => project.id})%>
+										<%arr_iteration = Array.new%>
+										<%@iteration.each do |iteration|%>
+											<%arr_iteration << iteration.id%>
+										<%end%>
+										
+										<%if ! arr_usid.blank? %>
+											<%= link_to k, project_iteration_usdemo_tasks_path(project.id, arr_iteration.first, arr_usid.first)%>
+										<%else%>
+											<%= link_to k%>
+										<%end%>
+				</td>
+		  </tr>
+	
+	<%else%>
+		
+	<%end%>
+	
+<%end%>	</table>	
+<br />
+
+<%= link_to image_tag('New.png'), new_project_path %>
+
+<%= button_to "Google", "http://www.google.com", :method => :get %>
+
+
+<style>
+.edittag {
+    text-decoration: none;
+}
+</style>

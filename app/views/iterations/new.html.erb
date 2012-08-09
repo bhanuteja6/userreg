@@ -1,0 +1,11 @@
+<%= javascript_include_tag('jquery.min', 'jquery.datepick')%>
+<%= stylesheet_link_tag('jquery.datepick')%>
+<%#= javascript_include_tag('jquery-ui.min')%>
+<%#= stylesheet_link_tag('jquery-ui')%>
+
+
+
+<h1>New iteration</h1>
+
+<%= render 'form' %>
+<%= button_to "show all the iterations belongs to this page", project_iterations_path(@project.id), :method => :get %>

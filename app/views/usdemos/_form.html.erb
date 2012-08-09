@@ -1,0 +1,42 @@
+
+<%= form_for @usdemo, :url => {:action => :create, :id => @iteration_id } do |f| %>
+
+  <%= f.text_field :projectid, :value => @iteration.project_id, :class => "projectid"%>	
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :disposition %><br />
+    <%= f.text_field :disposition %>
+  </div>
+  <div class="field">
+    <%= f.label :customer %><br />
+    <%#= f.text_field :customer %>
+    <%= f.select :customer, User.find(:all).collect{|p|[p.name]},  {:include_blank => 'select'} %>
+  </div>
+  <div class="field">
+    <%= f.label :tracker %><br />
+    <%#= f.text_field :tracker %>
+    <%= f.select :tracker, User.find(:all).collect{|p|[p.name]},  {:include_blank => 'select'} %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :estimated_hours %><br />
+    <%= f.text_field :estimated_hours, :placeholder => "0.0" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<style>
+.projectid{ visibility:hidden;}
+</style>

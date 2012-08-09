@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  type: 
+  disposition: MyString
+  acceptor: MyString
+  estimater_hours: MyString
+  description: MyText
+  usdemo: 
+
+two:
+  name: MyString
+  type: 
+  disposition: MyString
+  acceptor: MyString
+  estimater_hours: MyString
+  description: MyText
+  usdemo: 

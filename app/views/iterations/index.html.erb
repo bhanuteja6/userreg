@@ -1,0 +1,29 @@
+<table border = 1  >
+ <tr align ="center">
+	<th>Iteration name</th>
+	<th>Description</th>
+	<th>Startdate</th>
+	<th>Enddate</th>
+
+	<th>Edit</th>
+	<th>Destroy</th>
+ </tr>
+<br><b>Project Name:</b> <%= @project.name %><br>
+<%@iterations.each do |currentprojectiterations|%>
+<tr align ="center">
+	<td><%= link_to currentprojectiterations.name, new_project_iteration_usdemo_path(currentprojectiterations.project_id, currentprojectiterations.id ) %></td>
+	<td><%= currentprojectiterations.description%></td>
+	<td><%= currentprojectiterations.start_date%></td>
+	<td><%= currentprojectiterations.end_date%></td>
+	<td><%= link_to image_tag('editing.png' ), edit_project_iteration_path(currentprojectiterations.project_id, currentprojectiterations.id) %></td>
+	<td><%= link_to image_tag('deletings.png'), [@project, currentprojectiterations], confirm: 'Are you sure?', :method => :delete  %><br></td>
+	</tr>
+<%end%>
+<table>
+<br>
+
+
+
+<%= button_to "back to projects index", projects_path, :method => :get %>
+
+<%= button_to "create new itertaion for #{ @project.name} project", new_project_iteration_path(@project.id), :method => :get %>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @usdemo.name %>
+</p>
+
+<p>
+  <b>Disposition:</b>
+  <%= @usdemo.disposition %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @usdemo.customer %>
+</p>
+
+<p>
+  <b>Tracker:</b>
+  <%= @usdemo.tracker %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @usdemo.status %>
+</p>
+
+<p>
+  <b>Estimated hours:</b>
+  <%= @usdemo.estimated_hours %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @usdemo.description %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @usdemo.project %>
+</p>
+
+<p>
+  <b>Iteration:</b>
+  <%= @usdemo.iteration %>
+</p>
+
+
+<%= link_to 'Edit', edit_usdemo_path(@usdemo) %> |
+<%= link_to 'Back', usdemos_path %>

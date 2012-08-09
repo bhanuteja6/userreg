@@ -1,0 +1,31 @@
+<table border = 1 >
+  <tr align ="center">
+    <th>US-ID</th>
+    <th>Name</th>
+    <th>Disposition</th>
+    <th>Customer</th>
+    <th>Tracker</th>
+    <th>Status</th>
+    <th>Estimated hours</th>
+    <th>Description</th>
+    <th>iteration id</th>
+    <th>project id</th>
+  </tr>
+  <%  current_iteration = @iteration.id %>
+<%#= raise @usdemos.iterations.inspect%>
+<% @usdemos.each do |usdemo| %>
+  <tr align ="center">
+    <td><%= usdemo.id %></td>
+    <td><%= link_to usdemo.name, new_project_iteration_usdemo_task_path(usdemo.projectid, usdemo.iteration_id, usdemo.id ) %></td>
+    <td><%= usdemo.disposition %></td>
+    <td><%= usdemo.customer %></td>
+    <td><%= usdemo.tracker %></td>
+    <td><%= usdemo.status %></td>
+    <td><%= usdemo.estimated_hours %></td>
+    <td><%= usdemo.description%></td>
+    <td><% it_is =usdemo.iteration_id %><% iteration_name = Iteration.find_by_id(it_is) %><%=iteration_name.name %></td>
+    <td><% pro_id = usdemo.projectid%><% pro = Project.find_by_id(pro_id) %><%= pro.name %></td>
+  </tr>
+<% end %>
+</table>
+<%= button_to "create new user story for same iteration", new_project_iteration_usdemo_path, :method => :get %>

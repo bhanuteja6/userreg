@@ -1,0 +1,38 @@
+<%= form_for @task , :url => {:action => :create, :id => @usdemo_id } do |f| %>
+  <%= f.text_field :proid, :value => @usdemo.projectid, :class => "proid"%>	
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :task_type  %><br />
+    <%= f.text_field :task_type  %>
+  </div>
+  <div class="field">
+    <%= f.label :disposition %><br />
+    <%= f.text_field :disposition %>
+  </div>
+  <div class="field">
+    <%= f.label :acceptor %><br />
+    <%#= f.text_field :acceptor %>
+    <%= f.select :acceptor, User.find(:all).collect{|p|[p.name]},  {:include_blank => 'select'} %>
+
+  </div>
+  <div class="field">
+    <%= f.label :estimater_hours %><br />
+    <%= f.text_field :estimater_hours, :placeholder => "0.0"%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<style>
+	.proid{ visibility:hidden;}
+</style>
+

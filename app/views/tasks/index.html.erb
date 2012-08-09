@@ -1,0 +1,44 @@
+<h1>Listing tasks</h1>
+
+<table border = 1>
+  <tr>
+    <th>Task id</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Disposition</th>
+    <th>Acceptor</th>
+    <th>Estimater hours</th>
+    <th>Description</th>
+    <th>user sotry id</th>
+    <th>iteration id</th>
+    <th>project name</th>
+
+  </tr>
+
+<% @tasks.each do |task| %>
+  <tr align ="center">
+    <td><%= task.id %></td>
+    <td><%= task.name %></td>
+    <td><%= task.task_type  %></td>
+    <td><%= task.disposition %></td>
+    <td><%= task.acceptor %></td>
+    <td><%= task.estimater_hours %></td>
+    <td><%= task.description %></td>
+    <td><%= task.usdemo_id %></td>
+    <td><% iid=  task.usdemo.iteration.id %><% i_name = Iteration.find_by_id(iid)%><%= link_to i_name.name, new_project_iteration_path%></td>
+    <td><% pid = task.usdemo.projectid %><% pj_name=Project.find_by_id(pid)%><%= pj_name.name %> </td>
+    
+   
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= button_to "Show all projects", projects_path, :method => :get %>
+
+<%= button_to "Create new task", new_project_iteration_usdemo_task_path, :method => :get %>
+
+ <td><%#= link_to 'Show', task %></td>
+    <td><%#= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%#= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

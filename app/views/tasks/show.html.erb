@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @task.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @task.task_type  %>
+</p>
+
+<p>
+  <b>Disposition:</b>
+  <%= @task.disposition %>
+</p>
+
+<p>
+  <b>Acceptor:</b>
+  <%= @task.acceptor %>
+</p>
+
+<p>
+  <b>Estimater hours:</b>
+  <%= @task.estimater_hours %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
